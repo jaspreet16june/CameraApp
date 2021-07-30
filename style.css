@@ -25,12 +25,82 @@ button {
 #capture{
     position: fixed;
     right: 3rem;
-    top: 21rem;
+    top: 20rem;
 }
+.filters{
+    border: 1px solid white;
+    height: 16rem;
+    width: 6rem;
+    position: fixed;
+    
+    left: 2rem;
+    display: flex;
+    flex-direction: column;
+    top: 4rem;
+}
+.filters div{
+    border : 1px solid white;
+    flex-grow:1;
+    background-image: url(Nature.jpg);
+    background-size: cover;
+    background-blend-mode: color-burn;
+    
+}
+.zoom{
+    height: 6rem;
+    width: 4rem;
+   
+    position: fixed;
+    top: 3rem;
+    right: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* flex-grow: 1; */
+    /* background-color: black; */
+
+}
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    display: flex;
+    font-size: 50px;
+    line-height: 1;
+    justify-content: center;
+    letter-spacing: normal;
+    align-items: center;
+    text-transform: none;
+    /* display: inline-block; */
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+.zoom div{
+    border: 1px solid white;
+    flex-grow: 1;
+    height: 6rem;
+    width: 4rem;
+    background: transparent;
+
+
+}
+
 button{
   background: black;
   border: 7px solid white;
   
+}
+#gallery {
+    /* bottom: 8rem; */
+    color: white;
+    font-size: -0.1rem;
+    position: fixed;
+    /* left: 49rem; */
+    right: 3rem;
+    top: 29rem;
 }
 button span{
     height: 67%;

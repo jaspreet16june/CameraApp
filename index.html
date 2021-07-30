@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <body>
     <!-- for video we use video tag with different functionality  -->
     <video controls loop autoplay></video>
     <button id="record"><span></span></button>
     <button id="capture"><span></span></button>
+    <button id ="gallery">Gallery</button>
+    <div class="filters">
+      <div class="filter" style="background-color:#fab0a055;"></div>
+      <div class="filter" style="background-color: rgb(240, 199, 205);"></div>
+      <div class="filter" style= "background-color:#a29bfe4b;"></div>
+    </div>
+    <div class="zoom">
+      <div class="in material-icons" style="color: azure;">zoom_in</div>
+      <div class="out material-icons"style="color: azure;">zoom_out</div>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>
