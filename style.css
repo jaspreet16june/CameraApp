@@ -10,11 +10,13 @@ video{
     width:100vw;
     height:100vh;
     background-color: black;
+    
 }
 button {
     border-radius: 50%;
     height: 4rem;
     width: 4rem;
+    z-index: 3;
     cursor:pointer;
 }
 #record{
@@ -37,6 +39,7 @@ button {
     display: flex;
     flex-direction: column;
     top: 4rem;
+    z-index: 3;
 }
 .filters div{
     border : 1px solid white;
@@ -44,7 +47,7 @@ button {
     background-image: url(Nature.jpg);
     background-size: cover;
     background-blend-mode: color-burn;
-    
+    z-index: 1;
 }
 .zoom{
     height: 6rem;
@@ -60,6 +63,12 @@ button {
     /* flex-grow: 1; */
     /* background-color: black; */
 
+}
+.filter-div{
+    height:100vh;
+    width:100vw;
+    position:fixed;
+    top:0;
 }
 .material-icons {
     font-family: 'Material Icons';
@@ -84,8 +93,6 @@ button {
     height: 6rem;
     width: 4rem;
     background: transparent;
-
-
 }
 
 button{
@@ -96,11 +103,12 @@ button{
 #gallery {
     /* bottom: 8rem; */
     color: white;
-    font-size: -0.1rem;
+    font-size: 2.1rem;
     position: fixed;
     /* left: 49rem; */
     right: 3rem;
     top: 29rem;
+
 }
 button span{
     height: 67%;

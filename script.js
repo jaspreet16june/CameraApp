@@ -1,15 +1,36 @@
 let chunks = [];
+let body = document.querySelector("body");
 let recordingPlayer = document.querySelector("#record");
 let videoPlayer = document.querySelector("video");
 let mediaRecorder;
 let isrecordingbtn = false;
 let captureImage = document.querySelector("#capture");
 let recordSpan = recordingPlayer.querySelector("span");
-let allFilters = document.querySelector(".filter");
+let allFilters = document.querySelectorAll(".filter");
 let captureSpan = captureImage.querySelector("span");
 let zoomin = document.querySelector(".in");
 let zoomout = document.querySelector(".out");
 let currentZoom = 1;
+let filter = "";
+let galleryBtn = document.querySelector("#gallery")
+for(let i = 0;i< allFilters.length;i++){
+  allFilters[i].addEventListener("click",function(e){
+    let previousFilter = document.querySelector(".filter-div");
+    if(previousFilter){
+      previousFilter.remove();
+    }
+    let color = e.currentTarget.style.backgroundColor;
+    filter = color;
+    let div = document.createElement("div");
+    div.classList.add("filter-div");
+    div.style.backgroundColor = color;
+    body.append(div);
+  });
+}
+
+galleryBtn.addEventListener("click",function(){
+  location.assign("gallery.html");
+})
 zoomin.addEventListener("click", function () {
   currentZoom = currentZoom + 0.1;
   if (currentZoom > 3) currentZoom = 3;
@@ -38,14 +59,31 @@ captureImage.addEventListener("click", function () {
   tool.scale(currentZoom, currentZoom);
   tool.translate(-canvas.width / 2, -canvas.height / 2);
   tool.drawImage(videoPlayer, 0, 0);
+
+  if(filter != ""){
+  tool.fillStyle = filter;
+  tool.fillRect(0,0,canvas.width,canvas.height);
+}
+
   let Url = canvas.toDataURL();
-  let a = document.createElement("a");
-  a.href = Url;
-  a.download = "img.png";
-  a.click();
-  a.remove();
+  saveMedia(Url);
+  // let a = document.createElement("a");
+  // a.href = Url;
+  // a.download = "img.png";
+  // a.click();
+  // a.remove();
+
 });
 recordingPlayer.addEventListener("click", function () {
+  let previousFilter = document.querySelector(".filter-div");
+    if(previousFilter){
+      previousFilter.remove();
+    }
+  currentZoom = currentZoom - 0.1;
+  if(currentZoom < 1) currentZoom =1;
+
+  videoPlayer.style.transform = `scale(${currentZoom})`;
+
   if (isrecordingbtn) {
     mediaRecorder.stop();
     isrecordingbtn = false;
@@ -79,13 +117,14 @@ cameraToUse
     mediaRecorder.addEventListener("stop", function (e) {
       let blob = new Blob(chunks, { type: "video/mp4" });
       chunks = [];
-      let link = URL.createObjectURL(blob);
+      // let link = URL.createObjectURL(blob);
 
-      let a = document.createElement("a");
+      // let a = document.createElement("a");
 
-      a.href = link;
-      a.download = "video.mp4";
-      a.click();
+      // a.href = link;
+      // a.download = "video.mp4";
+      // a.click();
+      saveMedia(blob);
     });
   })
   .catch(function () {
